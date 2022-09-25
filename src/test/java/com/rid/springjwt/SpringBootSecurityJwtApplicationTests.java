@@ -10,6 +10,8 @@ import net.sf.jasperreports.engine.JRException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 
 import java.io.FileNotFoundException;
@@ -45,9 +47,9 @@ public class SpringBootSecurityJwtApplicationTests {
 		List<User> user = userRepository.findAll();
 		transaction.setName("PULSA");
 		transaction.setUser(user.get(0));
-		transaction.setNominal(new BigDecimal(90000));
+		transaction.setNominal(new BigDecimal(111000));
 		Transaction transaction1 = transactionService.BeliPulsa(transaction,"rid");
-//		transaction1.getPoin()
+		assertThat(transaction1.getPoin()).isEqualByComparingTo(new BigDecimal(36));
 	}
 
 	@Test
