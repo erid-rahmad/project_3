@@ -17,6 +17,64 @@
 	<variable name="Nominal" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{nominal}]]></variableExpression>
 	</variable>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{username}]]></groupExpression>
+		<groupFooter>
+			<band height="25">
+				<rectangle>
+					<reportElement x="0" y="0" width="555" height="20" uuid="1c02338d-a0e3-4eac-a51b-dcdea4d1231a"/>
+				</rectangle>
+				<textField pattern="#,##0.###;#,##0.###-">
+					<reportElement x="444" y="0" width="111" height="20" uuid="c9b59f24-dc29-4bea-95b5-92581dbf2a09"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{Nominal}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="110" y="0" width="112" height="20" uuid="44219188-6377-4c6a-9912-6fca8196bc01"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{POIN}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="111" height="20" backcolor="#E5F1FB" uuid="acb0ed2f-d5ba-444c-a952-4217119d1096"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total Poin]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="333" y="0" width="111" height="20" backcolor="#E5F1FB" uuid="d45f9a3d-e6b3-48ca-8813-52bbaff0a23b"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total Transaction]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
 	<background>
 		<band/>
 	</background>
@@ -190,32 +248,6 @@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="20">
-			<rectangle>
-				<reportElement x="0" y="0" width="555" height="20" uuid="2edc210a-efae-4603-bd03-f3bbf4e3e3d6"/>
-			</rectangle>
-			<textField>
-				<reportElement x="110" y="0" width="112" height="20" uuid="9a95818a-dcc7-4e78-9d63-8bc237512f8d"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{POIN}]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0.###;#,##0.###-">
-				<reportElement x="444" y="0" width="111" height="20" uuid="4eef5648-86e3-4dd0-bae2-e967d59934e3"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{Nominal}]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="20"/>
 	</summary>
 </jasperReport>
