@@ -61,34 +61,24 @@ public class TransactionService {
         transaction.setUser(user.get());
         if (transaction_.getName().equals("PULSA")){
             transaction.setName("PULSA");
-            if (transaction_.getNominal().intValue()>50000 ){
-                if (transaction_.getNominal().intValue()>100000) {
-                    transaction.setPoin(transaction.getPoin().add(new BigDecimal(50000 / 2000 * 1)));
-                }
-                else {
-                    BigDecimal bigDecimal =(transaction_.getNominal().subtract(new BigDecimal(50000))).divide(new BigDecimal(2000));
-                    transaction.setPoin(transaction.getPoin().add(bigDecimal));
-                }
-            }
-            if (transaction_.getNominal().intValue()>100000 ){
-                BigDecimal bigDecimal =(transaction_.getNominal().subtract(new BigDecimal(100000))).divide(new BigDecimal(2000)).multiply(new BigDecimal(2));
+            if (transaction_.getNominal().intValue()>50000 && transaction_.getNominal().intValue()<=100000 ){
+                BigDecimal bigDecimal =(transaction_.getNominal().subtract(new BigDecimal(50000))).divide(new BigDecimal(2000));
                 transaction.setPoin(transaction.getPoin().add(bigDecimal));
+            }
+            else if (transaction_.getNominal().intValue()>100000 ){
+                BigDecimal bigDecimal =(transaction_.getNominal().subtract(new BigDecimal(100000))).divide(new BigDecimal(2000)).multiply(new BigDecimal(2));
+                transaction.setPoin(transaction.getPoin().add(bigDecimal).add(new BigDecimal(25)));
             }
 
         }else {
             transaction.setName("LISTRIK");
-            if ( transaction_.getNominal().intValue()>10000 ){
-                if (transaction_.getNominal().intValue()>30000) {
-                    transaction.setPoin(transaction.getPoin().add(new BigDecimal(20000 / 1000 * 1)));
-                }
-                else {
-                    BigDecimal bigDecimal =(transaction_.getNominal().subtract(new BigDecimal(10000))).divide(new BigDecimal(2000));
-                    transaction.setPoin(transaction.getPoin().add(bigDecimal));
-                }
+            if ( transaction_.getNominal().intValue()>10000 && transaction_.getNominal().intValue()<=30000 ){
+                BigDecimal bigDecimal =(transaction_.getNominal().subtract(new BigDecimal(10000))).divide(new BigDecimal(1000));
+                transaction.setPoin(transaction.getPoin().add(bigDecimal));
             }
-            if (transaction_.getNominal().intValue()>30000 ){
-                BigDecimal bigDecimal =(transaction_.getNominal().subtract(new BigDecimal(30000))).divide(new BigDecimal(2000)).multiply(new BigDecimal(2));
-                transaction.setPoin(bigDecimal);
+            else if (transaction_.getNominal().intValue()>30000 ){
+                BigDecimal bigDecimal =(transaction_.getNominal().subtract(new BigDecimal(30000))).divide(new BigDecimal(1000)).multiply(new BigDecimal(2));
+                transaction.setPoin(bigDecimal.add(new BigDecimal(20)));
             }
         }
         return transactionRepository.save(transaction);
