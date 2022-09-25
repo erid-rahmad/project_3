@@ -11,10 +11,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
+
 
 @SpringBootTest
 public class SpringBootSecurityJwtApplicationTests {
@@ -45,11 +46,13 @@ public class SpringBootSecurityJwtApplicationTests {
 		transaction.setName("PULSA");
 		transaction.setUser(user.get(0));
 		transaction.setNominal(new BigDecimal(90000));
-		transactionService.BeliPulsa(transaction,"rid");
+		Transaction transaction1 = transactionService.BeliPulsa(transaction,"rid");
+//		transaction1.getPoin()
 	}
 
 	@Test
 	public void report() throws FileNotFoundException, JRException {
+
 		ReportFilter reportFilter = new ReportFilter();
 		transactionService.historyReport(reportFilter);
 	}

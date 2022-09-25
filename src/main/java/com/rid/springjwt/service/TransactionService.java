@@ -68,7 +68,7 @@ public class TransactionService {
             }
 
         }else {
-            transaction.setName("LISTIK");
+            transaction.setName("LISTRIK");
             if ( transaction_.getNominal().intValue()>10000 && transaction_.getNominal().intValue()<=30000){
                 transaction.setPoin(new BigDecimal(transaction_.getNominal().intValue()/1000*1));
             }
@@ -100,6 +100,8 @@ public class TransactionService {
             java.sql.Date date = new java.sql.Date(reportFilter.getEndDate().getTime());
             sql.append(" and t.date < '"+date.toString()+"'");
         }
+
+        sql.append(" order by t.user_id  ");
         Query query = entityManager.createNativeQuery(sql.toString(),Transaction.class);
         List<Transaction> customerList = query.getResultList();
         List<TransactionDTO> transactionDTOS =  customerList
@@ -134,6 +136,7 @@ public class TransactionService {
         transactionDTO.setNominal(transaction.getNominal().intValue());
         transactionDTO.setPoin(transaction.getPoin().intValue());
         transactionDTO.setUsername(transaction.getUser().getUsername());
+        transactionDTO.setName(transaction.getName());
         return transactionDTO;
     }
 
